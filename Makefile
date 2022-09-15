@@ -6,7 +6,7 @@
 #    By: mforstho <mforstho@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/09/14 13:15:52 by mforstho      #+#    #+#                  #
-#    Updated: 2022/09/14 16:44:45 by mforstho      ########   odam.nl          #
+#    Updated: 2022/09/15 15:42:13 by mforstho      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SOURCES :=									\
 	src/operations/op_reverse_rotate.c		\
 	src/operations/op_rotate.c				\
 	src/operations/op_swap.c				\
-	src/push_swap.c
+	src/push_swap.c							\
+	src/tmp/debug_print_stacks.c
 
 HEADERS := src/push_swap.h libft/libft.h
 OBJDIR := obj

@@ -6,7 +6,7 @@
 /*   By: mforstho <mforstho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/06 15:31:48 by mforstho      #+#    #+#                 */
-/*   Updated: 2022/09/14 16:43:12 by mforstho      ########   odam.nl         */
+/*   Updated: 2022/09/15 15:16:32 by mforstho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 typedef struct s_stack
 {
 	int				content;
-	//unsigned int	final_index;
+	unsigned int	final_index;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -64,5 +64,9 @@ bool	rr(t_stack **a, t_stack **b);
 bool	rra(t_stack **a, t_stack **b);
 bool	rrb(t_stack **a, t_stack **b);
 bool	rrr(t_stack **a, t_stack **b);
+
+
+//TEMPORARY
+void	debug_print_stacks(t_stack *a, t_stack *b);
 
 #endif
