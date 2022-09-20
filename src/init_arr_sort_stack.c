@@ -6,7 +6,7 @@
 /*   By: mforstho <mforstho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/20 14:29:30 by mforstho      #+#    #+#                 */
-/*   Updated: 2022/09/20 15:46:30 by mforstho      ########   odam.nl         */
+/*   Updated: 2022/09/20 17:12:07 by mforstho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,7 @@ int	*initialize_array(int argc, char *argv[])
 	while (i < argc - 1)
 	{
 		ft_atoi(argv[i + 1], &tmp);
-		printf("%s  ", argv[i + 1]);	// tmp
 		arr[i] = tmp;
-		printf("%i\n", arr[i]);			// tmp
 		i++;
 	}
 	return (arr);
@@ -58,7 +56,6 @@ int	bubble_sort_array(int argc, int **arr)
 	int	sorted;
 
 	sorted = 0;
-	printf("Starting sort\n");
 	while (sorted != argc - 2)
 	{
 		sorted = 0;
@@ -91,12 +88,12 @@ int	initialize_stack(t_data *data, char *argv[])
 	while (argv[i])
 	{
 		if (ft_atoi(argv[i], &result) == false)
-			return (EXIT_FAILURE);
+			return (ERROR);
 		if (ps_stacknew_back(&data->a, result) == NULL)
-			return (EXIT_FAILURE);
+			return (ERROR);
 		i++;
 	}
-	return (EXIT_SUCCESS);
+	return (OK);
 }
 
 void	set_stack_index(t_data *data, int argc, int *arr)
@@ -114,7 +111,6 @@ void	set_stack_index(t_data *data, int argc, int *arr)
 				a->final_index = i;
 			i++;
 		}
-		printf("%i | %i\n", a->content, a->final_index);
 		a = a->next;
 	}
 }

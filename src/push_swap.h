@@ -6,7 +6,7 @@
 /*   By: mforstho <mforstho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/06 15:31:48 by mforstho      #+#    #+#                 */
-/*   Updated: 2022/09/20 14:59:07 by mforstho      ########   odam.nl         */
+/*   Updated: 2022/09/20 17:08:33 by mforstho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,25 @@ typedef enum e_status {
 	ERROR,
 }	t_status;
 
+typedef enum e_operation {
+	SA,
+	SB,
+	SS,
+	PA,
+	PB,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR,
+}	t_operation;
+
+typedef bool	(*t_op_function)(t_stack **a, t_stack **b);
+
 t_stack	*ps_stack_secondlast(t_stack *lst);
-void	ps_stackadd_back(t_stack **lst, t_stack *new);
-void	ps_stackadd_front(t_stack **lst, t_stack *new);
+void	ps_stackadd_back(t_stack **lst, t_stack *new_stack);
+void	ps_stackadd_front(t_stack **lst, t_stack *new_stack);
 void	ps_stackclear(t_stack **lst);
 t_stack	*ps_stacklast(t_stack *lst);
 t_stack	*ps_stacknew_back(t_stack **lst, int data);
@@ -71,6 +87,8 @@ int		check_if_sorted(int argc, int **arr);
 int		bubble_sort_array(int argc, int **arr);
 int		initialize_stack(t_data *data, char *argv[]);
 void	set_stack_index(t_data *data, int argc, int *arr);
+
+void	radix_sort(int argc, t_data *data);
 
 //TEMPORARY
 void	debug_print_stacks(t_stack *a, t_stack *b);
