@@ -6,18 +6,16 @@
 #    By: mforstho <mforstho@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/09/14 13:15:52 by mforstho      #+#    #+#                  #
-#    Updated: 2022/09/15 15:42:13 by mforstho      ########   odam.nl          #
+#    Updated: 2022/09/20 15:42:41 by mforstho      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME := push_swap
 CC := gcc
-CFLAGS ?= -Wextra -Wall -Werror
+CFLAGS ?= -Wextra -Wall -Werror -fsanitize=address -g
 
 SOURCES :=									\
-	src/char/ft_isspace.c					\
-	src/char/new_atoi.c						\
 	src/lst/ps_stack_secondlast.c			\
 	src/lst/ps_stackadd_back.c				\
 	src/lst/ps_stackadd_front.c				\
@@ -31,6 +29,7 @@ SOURCES :=									\
 	src/operations/op_rotate.c				\
 	src/operations/op_swap.c				\
 	src/push_swap.c							\
+	src/init_arr_sort_stack.c				\
 	src/tmp/debug_print_stacks.c
 
 HEADERS := src/push_swap.h libft/libft.h

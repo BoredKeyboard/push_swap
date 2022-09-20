@@ -6,7 +6,7 @@
 /*   By: mforstho <mforstho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/06 15:31:48 by mforstho      #+#    #+#                 */
-/*   Updated: 2022/09/15 15:16:32 by mforstho      ########   odam.nl         */
+/*   Updated: 2022/09/20 14:59:07 by mforstho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <limits.h>
+# include <stdio.h> //tmp
 
 # include "libft.h"
 
@@ -65,6 +66,11 @@ bool	rra(t_stack **a, t_stack **b);
 bool	rrb(t_stack **a, t_stack **b);
 bool	rrr(t_stack **a, t_stack **b);
 
+int		*initialize_array(int argc, char *argv[]);
+int		check_if_sorted(int argc, int **arr);
+int		bubble_sort_array(int argc, int **arr);
+int		initialize_stack(t_data *data, char *argv[]);
+void	set_stack_index(t_data *data, int argc, int *arr);
 
 //TEMPORARY
 void	debug_print_stacks(t_stack *a, t_stack *b);

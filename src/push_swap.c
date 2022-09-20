@@ -6,102 +6,54 @@
 /*   By: mforstho <mforstho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/06 15:31:32 by mforstho      #+#    #+#                 */
-/*   Updated: 2022/09/15 15:57:16 by mforstho      ########   odam.nl         */
+/*   Updated: 2022/09/20 15:59:40 by mforstho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-#include <stdio.h>
-
-static int	*initialize_array(int argc, char *argv[])
+static int	get_max_value(int argc)
 {
 	int	i;
-	int	tmp;
-	int	*arr;
+	int	max_value;
 
-	arr = malloc((argc - 1) * sizeof(int));
 	i = 0;
-	tmp = 0;
-	if (arr == NULL)
+	max_value = argc - 2;
+	while (max_value != 0)
 	{
-		free(arr);
-		return (NULL);
-	}
-
-	while (i < argc - 1)
-	{
-		ft_atoi(argv[i + 1], &tmp);
-		printf("%s  ", argv[i + 1]);	// tmp
-		arr[i] = tmp;
-		printf("%i\n", arr[i]);			// tmp
+		max_value >>= 1;
 		i++;
 	}
-	return (arr);
+	return (i);
 }
 
-static void	bubble_sort_array(int argc, int **arr)
+static unsigned int	get_digit_at_index(int i, unsigned int final_index)
+{
+	return ((final_index >> i) & 1);
+}
+
+static void	radix_sort(int argc, t_data *data)
 {
 	int	i;
-	int	tmp;
-	int	sorted;
+	int	j;
+	int	max_value;
 
 	i = 0;
-	tmp = 0;
-	sorted = 0;
-	while (sorted != argc - 2)
+	max_value = get_max_value(argc);
+	while (i < max_value)
 	{
-		sorted = 0;
-		i = 0;
-		while (i < argc - 2)
+		j = 0;
+		while (j < argc - 1)
 		{
-			if ((*arr)[i] > (*arr)[i + 1])
-			{
-				tmp = (*arr)[i];
-				(*arr)[i] = (*arr)[i + 1];
-				(*arr)[i + 1] = tmp;
-			}
+			if (get_digit_at_index(i, data->a->final_index) == 0)
+				pb(&data->a, &data->b);
 			else
-				sorted++;
-			i++;
+				ra(&data->a, &data->b);
+			j++;
 		}
-	}
-}
-
-static int	initialize_stack(t_data *data, char *argv[])
-{
-	int	i;
-	int	result;
-
-	i = 1;
-	result = 0;
-	while (argv[i])
-	{
-		if (ft_atoi(argv[i], &result) == false)
-			return (EXIT_FAILURE);
-		if (ps_stacknew_back(&data->a, result) == NULL)
-			return (EXIT_FAILURE);
+		while (data->b != NULL)
+			pa(&data->a, &data->b);
 		i++;
-	}
-	return (EXIT_SUCCESS);
-}
-
-static void	set_stack_index(t_data *data, int argc, int *arr)
-{
-	int	i;
-
-	i = 0;
-	while (data->a)
-	{
-		i = 0;
-		while (i < argc - 1)
-		{
-			if (arr[i] == data->a->content)
-				data->a->final_index = i;
-			i++;
-		}
-		printf("%i | %i\n", data->a->content, data->a->final_index);
-		data->a = data->a->next;
 	}
 }
 
@@ -121,39 +73,68 @@ int	main(int argc, char *argv[])
 
 	printf("Unsorted array: %i, %i, %i, %i, %i\n", arr[0], arr[1], arr[2], arr[3], arr[4]);
 
-	bubble_sort_array(argc, &arr);
+	if (check_if_sorted(argc, &arr) != OK)
+	{
+		if (bubble_sort_array(argc, &arr) != OK)
+		{
+			ft_putstr_fd("Error\n", STDERR_FILENO);
+			return (EXIT_FAILURE);
+		}
+	}
 
-	printf("Sorted array: %i, %i, %i, %i, %i\n\n", arr[0], arr[1], arr[2], arr[3], arr[4]);
+	// printf("Sorted array: %i, %i, %i, %i, %i", arr[0], arr[1], arr[2], arr[3], arr[4]);
+	// printf(" %i, %i, %i, %i, %i\n\n", arr[5], arr[6], arr[7], arr[8], arr[9]);
 
 	initialize_stack(&data, argv);
 	debug_print_stacks(data.a, data.b);
 
 	set_stack_index(&data, argc, arr);
 
-	// debug_print_stacks(data.a, data.b);
+	printf("radix sort:\n");
 
-	// sa(&data.a, &data.b);
-	// debug_print_stacks(data.a, data.b);
+	radix_sort(argc, &data);
+	debug_print_stacks(data.a, data.b);
 
-	// pb(&data.a, &data.b);
-	// pb(&data.a, &data.b);
-	// pb(&data.a, &data.b);
-	// debug_print_stacks(data.a, data.b);
-
-	// ra(&data.a, &data.b);
-	// rb(&data.a, &data.b);
-	// debug_print_stacks(data.a, data.b);
-
-	// rra(&data.a, &data.b);
-	// rrb(&data.a, &data.b);
-	// debug_print_stacks(data.a, data.b);
-
-	// sa(&data.a, &data.b);
-	// debug_print_stacks(data.a, data.b);
-
-	// pa(&data.a, &data.b);
-	// pa(&data.a, &data.b);
-	// pa(&data.a, &data.b);
-	// debug_print_stacks(data.a, data.b);
+	// TMP
+	// printf("\n");
+	// printf("Highest: %i\nMax value: %i\n", (argc - 2), get_max_value(argc));
 	return (EXIT_SUCCESS);
 }
+
+
+/*
+5 & 7
+101 & 111
+101 = 5
+
+a = 13 & 6
+10101 & 00110
+00100 = 4 = a 
+
+14 = 10110
+14 >> 3
+     
+   10
+
+(14 >> i) & 1 =?= 0
+101 & 1 = 1
+
+
+& | ^ ~ >> <<
+
+     
+
+
+
+while (i < grootste index int in binary)
+{
+	while (j < aantal getallen in list a)
+	{
+		blabla
+
+		j++;
+		data->a = data->a.next;
+	}
+	i++;
+}
+*/
