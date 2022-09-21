@@ -4,5 +4,5 @@
 !*.h
 !Makefile
 !*.mk
-/src/tmp/debug_print_stacks.c
+tmp/
 !.gitignore

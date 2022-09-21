@@ -6,7 +6,7 @@
 /*   By: mforstho <mforstho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/20 17:07:53 by mforstho      #+#    #+#                 */
-/*   Updated: 2022/09/20 17:22:50 by mforstho      ########   odam.nl         */
+/*   Updated: 2022/09/21 14:23:27 by mforstho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,45 +30,6 @@ static int	get_max_value(int argc)
 static unsigned int	get_digit_at_index(int i, unsigned int final_index)
 {
 	return ((final_index >> i) & 1);
-}
-
-static void	print_operation(t_operation op)
-{
-	static char	*t_op_array[] = {
-		[SA] = "sa",
-		[SB] = "sb",
-		[SS] = "ss",
-		[PA] = "pa",
-		[PB] = "pb",
-		[RA] = "ra",
-		[RB] = "rb",
-		[RR] = "rr",
-		[RRA] = "rra",
-		[RRB] = "rrb",
-		[RRR] = "rrr",
-	};
-
-	ft_putendl_fd(t_op_array[op], STDOUT_FILENO);
-}
-
-static void	exec_op(t_operation op, t_stack **a, t_stack **b)
-{
-	static t_op_function	op_fn[] = {
-	[SA] = sa,
-	[SB] = sb,
-	[SS] = ss,
-	[PA] = pa,
-	[PB] = pb,
-	[RA] = ra,
-	[RB] = rb,
-	[RR] = rr,
-	[RRA] = rra,
-	[RRB] = rrb,
-	[RRR] = rrr,
-	};
-
-	if (op_fn[op](a, b) == true)
-		print_operation(op);
 }
 
 void	radix_sort(int argc, t_data *data)

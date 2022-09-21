@@ -6,7 +6,7 @@
 /*   By: mforstho <mforstho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/06 15:31:48 by mforstho      #+#    #+#                 */
-/*   Updated: 2022/09/20 17:08:33 by mforstho      ########   odam.nl         */
+/*   Updated: 2022/09/21 15:53:35 by mforstho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,14 @@ int		initialize_stack(t_data *data, char *argv[]);
 void	set_stack_index(t_data *data, int argc, int *arr);
 
 void	radix_sort(int argc, t_data *data);
+
+void	exec_op(t_operation op, t_stack **a, t_stack **b);
+
+void	ps_hc_three(t_stack **a, t_stack **b);
+void	ps_hc_four(t_stack **a, t_stack **b);
+void	ps_hc_five(t_stack **a, t_stack **b);
+
+void	ps_choose_sort(int argc, t_data *data);
 
 //TEMPORARY
 void	debug_print_stacks(t_stack *a, t_stack *b);

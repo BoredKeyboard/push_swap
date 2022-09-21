@@ -1,45 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   debug_print_stacks.c                               :+:    :+:            */
+/*   choose_sort.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mforstho <mforstho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/09/15 14:33:08 by mforstho      #+#    #+#                 */
-/*   Updated: 2022/09/20 17:16:33 by mforstho      ########   odam.nl         */
+/*   Created: 2022/09/21 15:50:15 by mforstho      #+#    #+#                 */
+/*   Updated: 2022/09/21 15:52:36 by mforstho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-#include <stdio.h>
-
-void	debug_print_stacks(t_stack *a, t_stack *b)
+void	ps_choose_sort(int argc, t_data *data)
 {
-	size_t	i;
-
-	i = 0;
-	printf("\ta\tb\n");
-	while (a != NULL || b != NULL)
-	{
-		printf("%-7zu|", i);
-		if (a != NULL)
-		{
-			printf("%-7d", a->content);
-			a = a->next;
-		}
-		else
-			printf("%-7.0i", 0);
-		printf("|");
-		if (b != NULL)
-		{
-			printf("%-8d", b->content);
-			b = b->next;
-		}
-		else
-			printf("\t\t");
-		printf("\n");
-		i++;
-	}
-	printf("\n");
+	if (argc - 1 == 2)
+		exec_op(SA, &data->a, &data->b);
+	else if (argc - 1 == 3)
+		ps_hc_three(&data->a, &data->b);
+	else if (argc - 1 == 4)
+		ps_hc_four(&data->a, &data->b);
+	else if (argc - 1 == 5)
+		ps_hc_five(&data->a, &data->b);
+	else
+		radix_sort(argc, data);
 }

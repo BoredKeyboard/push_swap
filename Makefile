@@ -6,7 +6,7 @@
 #    By: mforstho <mforstho@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/09/14 13:15:52 by mforstho      #+#    #+#                  #
-#    Updated: 2022/09/20 17:08:50 by mforstho      ########   odam.nl          #
+#    Updated: 2022/09/21 15:52:11 by mforstho      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,9 @@ SOURCES :=									\
 	src/push_swap.c							\
 	src/init_arr_sort_stack.c				\
 	src/radix_sort.c						\
-	src/tmp/debug_print_stacks.c
+	src/exec_op.c							\
+	src/choose_sort.c						\
+	src/hardcoded.c
 
 HEADERS := src/push_swap.h libft/libft.h
 OBJDIR := obj
