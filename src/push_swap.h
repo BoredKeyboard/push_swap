@@ -6,7 +6,7 @@
 /*   By: mforstho <mforstho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/06 15:31:48 by mforstho      #+#    #+#                 */
-/*   Updated: 2022/09/21 15:53:35 by mforstho      ########   odam.nl         */
+/*   Updated: 2022/09/21 16:54:32 by mforstho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <limits.h>
-# include <stdio.h> //tmp
 
 # include "libft.h"
 
@@ -33,13 +32,9 @@ typedef struct s_data
 	t_stack	*b;
 }	t_data;
 
-typedef enum e_error {
-	NO_ERROR,
-}	t_error;
-
 typedef enum e_status {
 	OK = 0,
-	ERROR,
+	ERROR = 1,
 }	t_status;
 
 typedef enum e_operation {
@@ -97,8 +92,5 @@ void	ps_hc_four(t_stack **a, t_stack **b);
 void	ps_hc_five(t_stack **a, t_stack **b);
 
 void	ps_choose_sort(int argc, t_data *data);
-
-//TEMPORARY
-void	debug_print_stacks(t_stack *a, t_stack *b);
 
 #endif

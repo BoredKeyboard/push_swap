@@ -6,7 +6,7 @@
 /*   By: mforstho <mforstho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/06 15:31:32 by mforstho      #+#    #+#                 */
-/*   Updated: 2022/09/21 15:54:01 by mforstho      ########   odam.nl         */
+/*   Updated: 2022/09/21 16:52:58 by mforstho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,16 @@ int	main(int argc, char *argv[])
 	if (bubble_sort_array(argc, &arr) != OK
 		|| initialize_stack(&data, argv) != OK)
 	{
+		ps_stackclear(&data.a);
+		ps_stackclear(&data.b);
+		free(arr);
 		ft_putstr_fd("Error\n", STDERR_FILENO);
 		return (EXIT_FAILURE);
 	}
 	set_stack_index(&data, argc, arr);
 	ps_choose_sort(argc, &data);
+	ps_stackclear(&data.a);
+	ps_stackclear(&data.b);
+	free(arr);
 	return (EXIT_SUCCESS);
 }

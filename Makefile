@@ -6,14 +6,14 @@
 #    By: mforstho <mforstho@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/09/14 13:15:52 by mforstho      #+#    #+#                  #
-#    Updated: 2022/09/21 15:52:11 by mforstho      ########   odam.nl          #
+#    Updated: 2022/09/21 16:54:09 by mforstho      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME := push_swap
 CC := gcc
-CFLAGS ?= -Wextra -Wall -Werror -fsanitize=address -g
+CFLAGS ?= -Wextra -Wall -Werror
 
 SOURCES :=									\
 	src/lst/ps_stack_secondlast.c			\
