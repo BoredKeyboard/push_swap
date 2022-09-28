@@ -6,7 +6,7 @@
 /*   By: mforstho <mforstho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/06 15:31:48 by mforstho      #+#    #+#                 */
-/*   Updated: 2022/09/21 16:54:32 by mforstho      ########   odam.nl         */
+/*   Updated: 2022/09/28 16:10:59 by mforstho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,13 @@
 
 # include "libft.h"
 
-typedef struct s_stack
-{
+typedef struct s_stack {
 	int				content;
 	unsigned int	final_index;
 	struct s_stack	*next;
 }	t_stack;
 
-typedef struct s_data
-{
+typedef struct s_data {
 	t_stack	*a;
 	t_stack	*b;
 }	t_data;

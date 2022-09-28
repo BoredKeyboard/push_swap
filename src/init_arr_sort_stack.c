@@ -6,7 +6,7 @@
 /*   By: mforstho <mforstho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/20 14:29:30 by mforstho      #+#    #+#                 */
-/*   Updated: 2022/09/20 17:12:07 by mforstho      ########   odam.nl         */
+/*   Updated: 2022/09/28 16:03:44 by mforstho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,12 @@ int	*initialize_array(int argc, char *argv[])
 	}
 	while (i < argc - 1)
 	{
-		ft_atoi(argv[i + 1], &tmp);
+		if (ft_atoi(argv[i + 1], &tmp) == false)
+		{
+			ft_putstr_fd("Error\n", STDERR_FILENO);
+			free(arr);
+			return (NULL);
+		}
 		arr[i] = tmp;
 		i++;
 	}
@@ -46,6 +51,7 @@ int	check_if_sorted(int argc, int **arr)
 			return (ERROR);
 		i++;
 	}
+	free(*arr);
 	return (OK);
 }
 
